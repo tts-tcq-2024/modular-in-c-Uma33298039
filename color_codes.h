@@ -1,8 +1,8 @@
 #ifndef COLOR_CODES_H_
 #define COLOR_CODES_H_
 
-typedef enum {WHITE, RED, BLACK, YELLOW, VIOLET} MajorColor;
-typedef enum {BLUE, ORANGE, GREEN, BROWN, SLATE} MinorColor;
+enum MajorColor {WHITE, RED, BLACK, YELLOW, VIOLET} ;
+enum MinorColor{BLUE, ORANGE, GREEN, BROWN, SLATE} ;
 
 extern const char* MajorColorNames[];
 extern const char* MinorColorNames[];
