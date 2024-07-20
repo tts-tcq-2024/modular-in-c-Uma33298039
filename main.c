@@ -1,23 +1,33 @@
 #include <stdio.h>
-#include "color_codes.h"
+#include <assert.h>
+#include "color_code_converter.h"
+
+void testNumberToPair(int pairNumber, enum MajorColor expectedMajor, enum MinorColor expectedMinor) {
+    ColorPair colorPair = GetColorFromPairNumber(pairNumber);
+    char colorPairNames[MAX_COLORPAIR_NAME_CHARS];
+    ColorPairToString(&colorPair, colorPairNames);
+    printf("Got pair %s\n", colorPairNames);
+    assert(colorPair.majorColor == expectedMajor);
+    assert(colorPair.minorColor == expectedMinor);
+}
+
+void testPairToNumber(enum MajorColor major, enum MinorColor minor, int expectedPairNumber) {
+    ColorPair colorPair;
+    colorPair.majorColor = major;
+    colorPair.minorColor = minor;
+    int pairNumber = GetPairNumberFromColor(&colorPair);
+    printf("Got pair number %d\n", pairNumber);
+    assert(pairNumber == expectedPairNumber);
+}
 
 int main() {
-    int pair_number;
-    char major_color[20];
-    char minor_color[20];
-
-    initialize_color_codes();
-
-    printf("Enter a pair number (1-25): ");
-    scanf("%d", &pair_number);
-
-    translate_color_pair(pair_number - 1, major_color, minor_color);
-
-    if (major_color[0] != '\0' && minor_color[0] != '\0') {
-        printf("Pair %d: %s - %s\n", pair_number, major_color, minor_color);
-    } else {
-        printf("Invalid pair number.\n");
-    }
-
+    testNumberToPair(4, WHITE, BROWN);
+    testNumberToPair(5, WHITE, SLATE);
+    testPairToNumber(BLACK, ORANGE, 12);
+    testPairToNumber(VIOLET, SLATE, 25);
+    
+    printf("\nColor Code Manual:\n");
+    PrintColorCodeManual();
+    
     return 0;
 }
