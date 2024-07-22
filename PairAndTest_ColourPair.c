@@ -25,9 +25,5 @@ int main() {
     testNumberToPair(15, BLACK, SLATE);
     testPairToNumber(BLACK, ORANGE, 12);
     testPairToNumber(VIOLET, SLATE, 25);
-    
-    printf("\nColor Code Manual:\n");
-    PrintColorCodeManual();
-    
     return 0;
 }
