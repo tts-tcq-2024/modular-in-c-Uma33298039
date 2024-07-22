@@ -20,5 +20,4 @@ extern const char* MajorColorNames[];
 extern const char* MinorColorNames[];
 extern int numberOfMajorColors;
 extern int numberOfMinorColors;
-
 #endif
